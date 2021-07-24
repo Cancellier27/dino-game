@@ -1,8 +1,19 @@
-const ROOT = document.querySelector('.root')
+const GC = document.querySelector('.gameContainer')
 const dot = document.querySelector('.mainDot')
+
+let gameScreen = 700
+let rDorInterval
+let interval = 500
 
 dot.style.left = '340px'
 dot.style.top = '340px'
+
+function createTag(name, className = '', text = '') {
+  let newTag = document.createElement(name)
+  newTag.className = className
+  newTag.innerHTML = text
+  return newTag
+}
 
 document.addEventListener('keydown', function (event) {
   const key = event.key
@@ -20,22 +31,6 @@ document.addEventListener('keydown', function (event) {
     case "ArrowDown":
       moveDown()
       break;
-    case "ArrowDown" && "ArrowLeft":
-      moveDown()
-      moveLeft()
-      break;
-    // case "ArrowDown":
-    //   moveDown()
-    //   console.log('down')
-    //   break;
-    // case "ArrowDown":
-    //   moveDown()
-    //   console.log('down')
-    //   break;
-    // case "ArrowDown":
-    //   moveDown()
-    //   console.log('down')
-    //   break;
   }
 })
 
@@ -52,51 +47,17 @@ function moveDown() {
   dot.style.top = parseInt(dot.style.top) + 10 + "px"
 }
 
-// let interval = 1000
-// let intervall = (num) => {
-//   setInterval(() => {
-//     return num -= 20
-//   }, interval)
-// }
+function randomDot() {
+  let rDot =  createTag("div", "random")  
+  rDot.style.left = `${Math.random() * gameScreen}px` 
+  rDot.style.top = `${Math.random() * gameScreen}px` 
+  GC.appendChild(rDot)
+}
 
-// function createTag(name, className = '', text = '') {
-//   let newTag = document.createElement(name)
-//   newTag.className = className
-//   newTag.innerHTML = text
-//   return newTag
-// }
+function setRandomDot() {
+  rDorInterval = setInterval(randomDot(), interval)
+}
 
-// function dinoMovement() {   
-//   let dinoHeight = dino.style.bottom
-//   let minus = 150
-//   // minus -= 20
-//   // dino.style.bottom = `${minus}px`
-//   // console.log(minus)
+document.addEventListener("DOMContentLoaded", setRandomDot())
 
-//   if(minus > -20) {
-//     intervall(minus)
-//     console.log(minus)
-//   } else {
-
-//   }
-
-
-
-
-// }
-
-// document.addEventListener('keydown', event => {
-//   if( event.keyCode === 38) {
-//     dinoJump()
-//     dinoMovement()
-//   }
-// })
-
-// arrow up	38
-// arrow down	40
-
-
-
-
-
-
+// setRandomDot()
