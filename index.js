@@ -1,9 +1,9 @@
 const GC = document.querySelector('.gameContainer')
 const dot = document.querySelector('.mainDot')
 
-let gameScreen = 700
+let gameScreen = 650
 let rDorInterval
-let interval = 500
+let interval = 5000
 
 dot.style.left = '340px'
 dot.style.top = '340px'
@@ -48,16 +48,15 @@ function moveDown() {
 }
 
 function randomDot() {
-  let rDot =  createTag("div", "random")  
-  rDot.style.left = `${Math.random() * gameScreen}px` 
-  rDot.style.top = `${Math.random() * gameScreen}px` 
+  let rDot = createTag("div", "random")
+  rDot.style.left = `${Math.random() * gameScreen}px`
+  rDot.style.top = `${Math.random() * gameScreen}px`
   GC.appendChild(rDot)
 }
 
 function setRandomDot() {
-  rDorInterval = setInterval(randomDot(), interval)
+  rDorInterval = setInterval(() => randomDot(), interval)
 }
 
-document.addEventListener("DOMContentLoaded", setRandomDot())
+setRandomDot()
 
-// setRandomDot()
