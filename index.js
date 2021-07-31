@@ -1,9 +1,11 @@
+import {moveDown, moveUp, moveRight, moveLeft} from "./config/moves.js"
+
 const GC = document.querySelector('.gameContainer')
 const dot = document.querySelector('.mainDot')
 
 let gameScreen = 650
 let rDorInterval
-let interval = 5000
+let interval = 99999999
 
 dot.style.left = '340px'
 dot.style.top = '340px'
@@ -33,19 +35,6 @@ document.addEventListener('keydown', function (event) {
       break;
   }
 })
-
-function moveLeft() {
-  dot.style.left = parseInt(dot.style.left) - 10 + "px"
-}
-function moveUp() {
-  dot.style.top = parseInt(dot.style.top) - 10 + "px"
-}
-function moveRight() {
-  dot.style.left = parseInt(dot.style.left) + 10 + "px"
-}
-function moveDown() {
-  dot.style.top = parseInt(dot.style.top) + 10 + "px"
-}
 
 function randomDot() {
   let rDot = createTag("div", "random")
